@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en" data-time="day">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ALOFT — Live Above It</title>
+<meta name="description" content="ALOFT — cinematic real estate. Expert agents, real guidance, and a clear path to what moves you.">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div id="pre" aria-hidden="true">
+  <svg class="pre-wm" viewBox="0 0 496 100"><g id="preLetters"></g></svg>
+  <div class="pre-count"><span id="preNum">000</span><i>%</i></div>
+  <div class="pre-line"><b id="preBar"></b></div>
+  <div class="pre-tag">Live above it</div>
+</div>
+
+<canvas id="confetti" aria-hidden="true"></canvas>
+<div id="cursor" aria-hidden="true"><i></i><b></b></div>
+<div id="progress"><b></b></div>
+<div id="grainfx" aria-hidden="true"></div>
+
+<!-- NAV -->
+<header id="nav">
+  <a class="logo" href="#hero" data-go aria-label="ALOFT home"><svg viewBox="0 0 496 100"><path class="wmp" fill-rule="evenodd"/></svg></a>
+  <nav class="links" aria-label="Primary">
+    <a href="#" data-cmdk class="lk">Search</a>
+    <a href="#listings" data-go class="lk">Agents</a>
+    <a href="#movement" data-go class="lk">Join</a>
+    <div class="dd"><button class="lk" aria-haspopup="true">Paperwork <i>▾</i></button>
+      <div class="dd-panel"><a href="#">Forms &amp; Applications</a><a href="#">Fair Housing Notice</a><a href="#">Operating Procedure</a><a href="#">Housing Vouchers Welcome</a></div></div>
+    <div class="dd"><button class="lk" aria-haspopup="true">Resources <i>▾</i></button>
+      <div class="dd-panel"><a href="#journal" data-go>Blog &amp; Market Reports</a><a href="#tools" data-go>Mortgage Calculator</a><a href="#tools" data-go>Neighborhood Vibe Finder</a><a href="#listings" data-go>Featured Listings</a></div></div>
+    <div class="dd"><button class="lk" aria-haspopup="true">About <i>▾</i></button>
+      <div class="dd-panel"><a href="#about" data-go>Our Story</a><a href="#voices" data-go>Client Voices</a><a href="#movement" data-go>Careers</a></div></div>
+  </nav>
+  <div class="nav-r">
+    <button class="kbd" data-cmdk aria-label="Open search"><span>Search</span><kbd>Ctrl K</kbd></button>
+    <button class="signin magnet" id="openSignin">Sign in</button>
+  </div>
+</header>
+
+<!-- SECTION DOTS -->
+<nav id="dots" aria-label="Sections"></nav>
+
+<!-- DOCK -->
+<div id="dock" role="toolbar" aria-label="Controls">
+  <div class="seg" id="timeSeg" role="radiogroup" aria-label="Time of day">
+    <button data-t="dawn" title="Dawn" aria-label="Dawn"><svg viewBox="0 0 24 24"><path d="M3 18h18M7 18a5 5 0 0 1 10 0M12 4v4M4.5 9.5l2 2M19.5 9.5l-2 2"/></svg></button>
+    <button data-t="day" class="on" title="Day" aria-label="Day"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></button>
+    <button data-t="golden" title="Golden hour" aria-label="Golden hour"><svg viewBox="0 0 24 24"><path d="M3 17h18M6 17a6 6 0 0 1 12 0M12 5v3M5 9l2 2M19 9l-2 2M2 13h2M20 13h2"/></svg></button>
+    <button data-t="night" title="Night" aria-label="Night"><svg viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+    <i class="thumb"></i>
+  </div>
+  <span class="sep"></span>
+  <button class="dk" id="savedBtn" title="Saved homes" aria-label="Saved homes"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.2-8-11a4.6 4.6 0 0 1 8-3 4.6 4.6 0 0 1 8 3c0 5.800-8 11-8 11z"/></svg><em id="savedN">0</em></button>
+  <button class="dk" data-cmdk title="Search (Ctrl K)" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg></button>
+</div>
+
+<main>
+
+<!-- 01 HERO -->
+<section id="hero" data-label="Home">
+  <div class="stage" id="stage">
+    <div class="sky" id="sky"></div>
+    <div class="stars" id="stars"></div>
+    <div class="sun" id="sun"></div>
+    <canvas id="cloudsBack"></canvas>
+    <div class="bld" id="bld"><img alt="" data-bld></div>
+    <canvas id="cloudsFront"></canvas>
+
+    <div class="hero-copy" id="heroCopy">
+      <h1 id="heroH1" aria-label="Rise to what moves you">Rise to What Moves You</h1>
+      <p class="sub"><span>Expert agents.</span> <span>Real guidance.</span> <span>A clear path to what’s next.</span></p>
+      <a href="#listings" data-go class="pill pill-dark magnet" id="heroCta"><span>Find Properties</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+
+    <div class="ghost-wrap" id="ghostWrap">
+      <svg class="ghost" viewBox="-6 -6 508 112"><path class="wmp" fill-rule="evenodd"/></svg>
+      <div class="ghost-cap" id="ghostCap">Real Estate</div>
+    </div>
+
+    <svg class="wm-clip" id="wmClip" viewBox="0 0 496 100" aria-hidden="true">
+      <defs>
+        <clipPath id="wmClipPath"><path class="wmp" fill-rule="evenodd"/></clipPath>
+        <linearGradient id="wmSky" x1="0" y1="0" x2="0" y2="1"><stop id="wmS0" offset="0"/><stop id="wmS1" offset=".6"/><stop id="wmS2" offset="1"/></linearGradient>
+        <linearGradient id="wmMist" x1="0" y1="0" x2="0" y2="1"><stop offset=".45" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".95"/></linearGradient>
+      </defs>
+      <g clip-path="url(#wmClipPath)">
+        <rect width="496" height="100" fill="url(#wmSky)"/>
+        <image id="wmImg" x="-10" y="-72" width="516" height="265" preserveAspectRatio="xMidYMid slice"/>
+        <rect x="0" y="0" width="496" height="100" fill="url(#wmMist)"/>
+      </g>
+    </svg>
+
+    <div class="veil" id="veil"></div>
+
+    <div class="hero-meta">
+      <div><i class="dot"></i> <span id="clock">NYC 00:00</span></div>
+      <div id="vibeTxt">40.7128° N · 74.0060° W</div>
+    </div>
+    <div class="scroll-cue" id="cue"><span>Scroll</span><i></i></div>
+    <div class="hero-badge">Voted #1 in<br><b>Skyline Living</b></div>
+  </div>
+</section>
+
+<!-- 02 STATEMENT -->
+<section id="about" class="light" data-label="Story">
+  <div class="strip" id="strip"><div class="strip-in" id="stripIn"><img alt="" data-art="street" data-par="0.12"></div></div>
+  <div class="wrap">
+    <h2 class="statement" data-scrub="soft"><span class="a">This isn’t just</span> <span class="b">about real estate.</span></h2>
+  </div>
+  <div class="slants" id="slants">
+    <div class="slant"><div><img alt="" data-art="mini:0"></div></div>
+    <div class="slant"><div><img alt="" data-art="mini:1"></div></div>
+    <div class="slant"><div><img alt="" data-art="mini:2"></div></div>
+    <div class="slant"><div><img alt="" data-art="mini:3"></div></div>
+  </div>
+  <div class="wrap narrow">
+    <p class="lede" data-scrub="blur">It’s about identity. Progress. Getting unstuck. You’re not just looking for a place. You’re looking for alignment. That’s what we help you find.</p>
+  </div>
+</section>
+
+<!-- 03 PROCESS -->
+<section id="process" class="light" data-label="Process">
+  <div class="proc">
+    <div class="proc-l">
+      <div class="stick">
+        <h2 data-split>Real Estate,<br>Rewired</h2>
+        <a href="#tools" data-go class="pill pill-dark magnet"><span>Get Free Match</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <div class="stepnum"><b id="stepNum">01</b><span>/ 04</span></div>
+      </div>
+    </div>
+    <div class="proc-r">
+      <span class="label">Steps:</span>
+      <ol id="steps">
+        <li><h3>Talk to a Real Human.</h3><p>We match you with an expert who actually listens — no scripts, no call centers, no bots. Just a person who gets what you’re after.</p></li>
+        <li><h3>Get Clarity.</h3><p>We define what you really want, not just what’s available. Budget, timing, neighborhood, vibe. All of it, mapped on one page.</p></li>
+        <li><h3>See Real Homes.</h3><p>Curated tours, off-market access and honest takes on every place. Skip the scroll — walk through the ones that matter.</p></li>
+        <li><h3>Close With Confidence.</h3><p>Negotiation, paperwork, inspections and lenders — handled by people who’ve closed it all, thousands of times over.</p></li>
+      </ol>
+      <i class="spine"><b id="spineFill"></b></i>
+    </div>
+  </div>
+</section>
+
+<!-- 04 MOVEMENT -->
+<section id="movement" class="light" data-label="Movement">
+  <div class="mv">
+    <figure class="mv-a" data-reveal><img alt="" data-art="portrait" data-par="0.1"></figure>
+    <figure class="mv-b" data-reveal><img alt="" data-art="greenhouse" data-par="0.14"></figure>
+    <div class="mv-copy">
+      <p data-scrub="blur">At ALOFT, our agents don’t just work for the brand — they own a part of it. Every agent is an equity partner, building a business that’s truly theirs, with the tools, the community and the upside to match.</p>
+      <a href="#" id="joinBtn" class="pill pill-dark magnet"><span>Join The Movement</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+  <div class="stats" id="stats">
+    <div><b data-count="12400" data-suf="+">0</b><span>Homes closed</span></div>
+    <div><b data-count="4.9" data-dec="1">0</b><span>Avg. client rating</span></div>
+    <div><b data-count="38" data-suf=" days">0</b><span>Median to close</span></div>
+    <div><b data-count="2.4" data-dec="1" data-pre="$" data-suf="B">0</b><span>Volume this year</span></div>
+  </div>
+</section>
+
+<!-- 05 VOICES -->
+<section id="voices" class="light" data-label="Voices">
+  <div class="vc">
+    <figure class="vc-img" data-reveal><img alt="" data-art="coffee" data-par="0.1"></figure>
+    <div class="vq">
+      <div class="vq-head"><span id="vqName">BERNADETTE HOGA</span><span class="stars" id="vqStars">★★★★★</span></div>
+      <blockquote id="vqText"></blockquote>
+      <div class="vq-ctrl">
+        <button id="vqPrev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+        <button id="vqNext" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <div class="vq-dots" id="vqDots"></div>
+        <span class="vq-role" id="vqRole"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 SERVICES -->
+<section id="services" class="dark" data-label="Services">
+  <div class="svc-track" id="svcTrack">
+    <div class="svc-stick">
+      <div class="svc-head"><span class="label">Services</span><h2>How ALOFT<br>Can Help You</h2></div>
+      <div class="svc-rows" id="svcRows">
+        <article class="row on" data-i="0" tabindex="0">
+          <div class="row-img"><img alt="" data-art="facade"></div>
+          <i class="ico"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7M5 10v10h14V10M10 20v-6h4v6"/></svg></i>
+          <p>Buy smarter with expert agents backed by mortgage, legal and appraisal pros — dialed in to get you the best deal, fast. We’ve done this over 10,000 times, and we know what wins.</p>
+          <h3>Buy</h3><span class="arr"><svg viewBox="0 0 24 24"><path d="M3 12h17M14 5l7 7-7 7"/></svg></span>
+        </article>
+        <article class="row" data-i="1" tabindex="0">
+          <div class="row-img"><img alt="" data-art="profile"></div>
+          <i class="ico"><svg viewBox="0 0 24 24"><path d="M4 8h16v12H4zM4 8l8-5 8 5M9 20v-6h6v6"/></svg></i>
+          <p>Sell fast, sell high. Your listing gets pro staging, strategic pricing, constant open houses, and agents who never stop working until the right buyer signs.</p>
+          <h3>Sell</h3><span class="arr"><svg viewBox="0 0 24 24"><path d="M3 12h17M14 5l7 7-7 7"/></svg></span>
+        </article>
+        <article class="row" data-i="2" tabindex="0">
+          <div class="row-img"><img alt="" data-art="nightflats"></div>
+          <i class="ico"><svg viewBox="0 0 24 24"><circle cx="8" cy="12" r="4"/><path d="M12 12h9M18 12v4M15 12v3"/></svg></i>
+          <p>Access hidden rentals before they hit the market through agents who know every landlord in town. With decades of city experience, we unlock the best deals you won’t find online.</p>
+          <h3>Rent</h3><span class="arr"><svg viewBox="0 0 24 24"><path d="M3 12h17M14 5l7 7-7 7"/></svg></span>
+        </article>
+      </div>
+    </div>
+  </div>
+  <div class="svc-after">
+    <p class="svc-p" data-scrub="blur">Our certified agents guide you through every stage of real estate with expert knowledge and reliable support.</p>
+    <div class="svc-btns"><a href="#listings" data-go class="pill pill-ghost magnet"><span>Get Started with ALOFT</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a href="#tools" data-go class="pill pill-ghost magnet"><span>Try the Match Tools</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    <div class="support">
+      <h3 data-split>Support Beyond<br>Buying and Selling</h3>
+      <div><p data-scrub="blur">The real estate market never stands still — and neither do we. Our agents offer continued support well past closing day: renovation advice, trusted contractors, tax guidance and quiet check-ins to help you maximize your investment.</p>
+      <a href="#journal" data-go class="pill pill-white magnet"><span>Explore Our Services</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 LISTINGS (extra) -->
+<section id="listings" class="light" data-label="Listings">
+  <div class="lst-head">
+    <div><span class="label">Featured listings</span><h2 data-split>Homes with a<br>point of view.</h2></div>
+    <div class="chips" id="chips">
+      <button class="on" data-f="all">All</button><button data-f="penthouse">Penthouse</button><button data-f="brownstone">Brownstone</button><button data-f="loft">Loft</button><button data-f="waterfront">Waterfront</button>
+    </div>
+  </div>
+  <div class="rail" id="rail" data-cursor="Drag"><div class="rail-in" id="railIn"></div></div>
+  <div class="rail-ctl"><div class="rail-bar"><b id="railBar"></b></div><span id="railCount">8 homes</span></div>
+</section>
+
+<!-- 08 TOOLS (extra) -->
+<section id="tools" class="tools" data-label="Match Tools">
+  <div class="orb o1"></div><div class="orb o2"></div>
+  <div class="tools-head"><span class="label">Free match tools</span><h2 data-split>Know your number.<br>Find your neighborhood.</h2></div>
+  <div class="tools-grid">
+    <div class="glass calc" id="calc">
+      <div class="g-title"><b>Mortgage calculator</b><span>Live estimate</span></div>
+      <div class="calc-body">
+        <div class="calc-in">
+          <label><span>Home price</span><output id="oPrice">$1,200,000</output><input type="range" id="iPrice" min="250000" max="5000000" step="10000" value="1200000"></label>
+          <label><span>Down payment</span><output id="oDown">20%</output><input type="range" id="iDown" min="3" max="60" step="1" value="20"></label>
+          <label><span>Interest rate</span><output id="oRate">6.25%</output><input type="range" id="iRate" min="3" max="9" step="0.05" value="6.25"></label>
+          <div class="term" id="term"><span>Term</span><div><button data-y="15">15 yr</button><button data-y="20">20 yr</button><button data-y="30" class="on">30 yr</button><i></i></div></div>
+        </div>
+        <div class="calc-out">
+          <div class="donut"><svg viewBox="0 0 120 120"><circle class="d-bg" cx="60" cy="60" r="48"/><circle class="d-seg s1" cx="60" cy="60" r="48"/><circle class="d-seg s2" cx="60" cy="60" r="48"/><circle class="d-seg s3" cx="60" cy="60" r="48"/></svg>
+            <div class="d-mid"><small>per month</small><b id="oMonthly">$0</b></div></div>
+          <ul class="legend"><li><i class="c1"></i>Principal &amp; interest <b id="lPI">$0</b></li><li><i class="c2"></i>Property tax <b id="lTax">$0</b></li><li><i class="c3"></i>Insurance &amp; HOA <b id="lIns">$0</b></li></ul>
+        </div>
+      </div>
+      <div class="calc-foot"><span id="cLoan">Loan $960,000</span><a href="#" class="pill pill-white magnet" id="preapprove"><span>Get pre-approved</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+    </div>
+
+    <div class="glass vibe" id="vibe">
+      <div class="g-title"><b>Neighborhood vibe finder</b><span>Drag to tune</span></div>
+      <div class="vibe-in">
+        <label><span>Pace</span><small>Quiet</small><input type="range" id="vPace" min="0" max="100" value="55"><small>Lively</small></label>
+        <label><span>Style</span><small>Historic</small><input type="range" id="vStyle" min="0" max="100" value="40"><small>Modern</small></label>
+        <label><span>Setting</span><small>Green</small><input type="range" id="vSet" min="0" max="100" value="45"><small>Urban</small></label>
+      </div>
+      <ol class="rank" id="rank"></ol>
+    </div>
+  </div>
+</section>
+
+<!-- 09 JOURNAL -->
+<section id="journal" class="light" data-label="Journal">
+  <div class="jr-head">
+    <h2 data-split>Blog &amp;<br>Resources</h2>
+    <div><p data-scrub="blur">See how we’ve helped clients achieve their real estate goals — one successful move at a time.</p><a href="#" class="pill pill-dark magnet"><span>Visit Our Blog</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  </div>
+  <div class="jr-list">
+    <a class="jr" href="#" data-cursor="Read"><div class="jr-t"><time>2026-10-01</time><h3>Q3 2026 Skyline Market Report</h3><p>Inventory, prices and days on market across the five boroughs — plus the three pockets quietly outperforming the rest.</p><span class="more">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div><div class="jr-i"><img alt="" data-art="bridge" data-par="0.1"></div></a>
+    <a class="jr" href="#" data-cursor="Read"><div class="jr-t"><time>2026-09-18</time><h3>Is Autumn the Secret Window to Buy?</h3><p>Fewer bidders, motivated sellers and softer rates. Why the leaves-fall season has become our clients’ favorite time to win.</p><span class="more">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div><div class="jr-i"><img alt="" data-art="parkAve" data-par="0.1"></div></a>
+    <a class="jr" href="#" data-cursor="Read"><div class="jr-t"><time>2026-09-04</time><h3>What $1M Buys in Different Neighborhoods</h3><p>Same budget, wildly different lives. We walked the blocks so you don’t have to — here’s what a million really gets you.</p><span class="more">Read More <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div><div class="jr-i"><img alt="" data-art="brownstone" data-par="0.1"></div></a>
+  </div>
+</section>
+
+<!-- 10 CTA -->
+<section id="cta" class="dark" data-label="Start">
+  <div class="cta-bg"><img alt="" data-art="sofa" data-par="0.16"></div>
+  <div class="cta-in">
+    <h2 data-split>Land where you belong.<br>We’ll get you there.</h2>
+    <div class="svc-btns"><a href="#" class="pill pill-glass magnet" data-toast="Tour request sent — an agent will text you in minutes."><span>Book a Tour</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a href="#" class="pill pill-glass magnet" data-toast="Connecting you with a real human…"><span>Talk to an Agent</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer" class="dark" data-label="Contact">
+  <div class="ft-top">
+    <div class="ft-news">
+      <h4>Subscribe to our Newsletter!</h4>
+      <form id="news" autocomplete="off"><input type="email" id="newsIn" placeholder="Enter address" aria-label="Email address" required><button aria-label="Subscribe"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button><i class="ul"></i></form>
+      <div class="ft-info">
+        <div><small>Head Office</small><p>5 West 37th Street, 12th Floor,<br>New York, NY 10018</p></div>
+        <div><small>Email Us</small><p>hello@aloftestate.com</p></div>
+        <div><small>Call Us</small><p>+1 212 555 0148</p></div>
+      </div>
+    </div>
+    <div class="ft-links"><a href="#" data-cmdk>Search</a><a href="#listings" data-go>Agents</a><a href="#movement" data-go>Join</a><a href="#about" data-go>About Us</a><a href="#" id="portal">Agent Portal</a></div>
+    <div class="ft-soc"><a href="#">Facebook</a><a href="#">Instagram</a><a href="#">Youtube</a><a href="#">Linkedin</a></div>
+  </div>
+  <div class="ft-wm" id="ftWm"><svg viewBox="0 0 496 100" aria-label="ALOFT"><defs><linearGradient id="shim" x1="0" x2="1"><stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#fff"/><stop offset="1" stop-color="#fff"/></linearGradient><clipPath id="ftClip"><path class="wmp" fill-rule="evenodd"/></clipPath></defs><path class="wmp" fill-rule="evenodd" fill="#fff"/><g clip-path="url(#ftClip)"><rect id="shimRect" x="-120" y="-10" width="90" height="120" fill="#7fb4ff" opacity=".0" transform="skewX(-20)"/></g></svg></div>
+  <div class="ft-bot"><div class="marq"><div class="marq-in"><span>Fair Housing Notice</span><span>Operating Procedure</span><span>Housing Choice Vouchers Welcome</span><span>Se Aceptan Vales de Elección de Vivienda</span><span>Equal Housing Opportunity</span><span>Fair Housing Notice</span><span>Operating Procedure</span><span>Housing Choice Vouchers Welcome</span><span>Se Aceptan Vales de Elección de Vivienda</span><span>Equal Housing Opportunity</span></div></div><small>© 2026 ALOFT Real Estate. A demo concept — not a real brokerage.</small></div>
+</footer>
+</main>
+
+<!-- COMMAND PALETTE -->
+<div id="cmdk" class="overlay" hidden>
+  <div class="cmd glass" role="dialog" aria-label="Search">
+    <div class="cmd-in"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><input id="cmdIn" placeholder="Search homes, neighborhoods, pages…" autocomplete="off"><kbd>Esc</kbd></div>
+    <ul id="cmdList"></ul>
+    <div class="cmd-foot"><span><kbd>↑</kbd><kbd>↓</kbd> navigate</span><span><kbd>↵</kbd> open</span><span><kbd>Esc</kbd> close</span></div>
+  </div>
+</div>
+
+<!-- SIGN IN -->
+<div id="signin" class="overlay" hidden>
+  <form class="modal glass" id="signForm">
+    <button type="button" class="x" data-close aria-label="Close">✕</button>
+    <svg class="m-wm" viewBox="0 0 496 100"><path class="wmp" fill-rule="evenodd" fill="currentColor"/></svg>
+    <h3>Welcome back.</h3><p>Sign in to see your saved homes and tours.</p>
+    <label>Email<input type="email" required placeholder="you@email.com"></label>
+    <label>Password<input type="password" required placeholder="••••••••"></label>
+    <button class="pill pill-white magnet" type="submit"><span>Sign in</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+  </form>
+</div>
+
+<div id="saved" class="overlay" hidden>
+  <div class="modal glass wide"><button type="button" class="x" data-close aria-label="Close">✕</button><h3>Saved homes</h3><div id="savedList"></div></div>
+</div>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/art.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
