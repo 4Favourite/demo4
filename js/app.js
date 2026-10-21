@@ -1,4 +1,4 @@
-/* ALOFT — app. Zero dependencies: custom scroll engine, hero sequence, widgets. */
+/* OAKLINE — app. Zero dependencies: custom scroll engine, hero sequence, widgets. */
 (function () {
   'use strict';
   const $ = (s, r = document) => r.querySelector(s);
@@ -135,6 +135,7 @@
   /* ---------- hero timeline ---------- */
   let mx = 0, my = 0, tmx = 0, tmy = 0;
   const hCopy = $('#heroCopy'), bld = $('#bld'), ghostWrap = $('#ghostWrap'), ghostEl = $('.ghost'), ghostCap = $('#ghostCap'), wmClip = $('#wmClip'), wmImg = $('#wmImg'), veil = $('#veil');
+  ghostEl.querySelector('path').style.strokeDasharray = '3200';
   const hMeta = $('.hero-meta'), hBadge = $('.hero-badge'), cue = $('#cue');
   function hero(t) {
     const hh = heroEl.offsetHeight - vh; const p = clamp(sy / hh);
@@ -152,13 +153,13 @@
     // ghost outline
     const gi = clamp((p - .2) / .1), go = clamp((p - .46) / .08), gv = gi * (1 - go);
     ghostWrap.style.opacity = gv; ghostWrap.style.transform = `translate(-50%,-50%) scale(${.92 + .2 * clamp((p - .2) / .4)})`;
-    ghostEl.style.setProperty('--dash', 1400 * (1 - clamp((p - .19) / .2)));
+    ghostEl.style.setProperty('--dash', 3200 * (1 - clamp((p - .19) / .2)));
     ghostCap.style.opacity = clamp((p - .27) / .08);
     // clipped wordmark
     const wi = eo(clamp((p - .5) / .12)), wo = clamp((p - .9) / .08);
     wmClip.style.opacity = wi * (1 - wo);
     wmClip.style.transform = `translate(-50%,-50%) scale(${.9 + .26 * clamp((p - .5) / .46)}) translateY(${(1 - wi) * 4}vh)`;
-    wmImg.setAttribute('y', (-72 + 24 * clamp((p - .5) / .46)).toFixed(1));
+    wmImg.setAttribute('y', (-96 + 32 * clamp((p - .5) / .46)).toFixed(1));
     veil.style.opacity = clamp((p - .86) / .14);
     const fo = 1 - clamp(p / .05); hMeta.style.opacity = fo; hBadge.style.opacity = fo; cue.style.opacity = fo;
   }
@@ -224,10 +225,10 @@
 
   /* ---------- voices ---------- */
   const V = [
-    ['BERNADETTE HOGA', 'ALOFT made buying our first home feel human. Our agent knew every block, every owner, and exactly when to push. We closed in 31 days — $40k under asking.', 'First-time buyer · Brooklyn Heights'],
+    ['BERNADETTE HOGA', 'OAKLINE made buying our first home feel human. Our agent knew every block, every owner, and exactly when to push. We closed in 31 days — $40k under asking.', 'First-time buyer · Brooklyn Heights'],
     ['MARCUS & DELILAH OYELARAN', 'We sold in six days with three offers over ask. The staging, the pricing, the open-house energy — it felt like a campaign, not a listing.', 'Seller · Tribeca'],
     ['PRIYA NATARAJAN', 'I was priced out of every rental portal. My agent found a quiet off-market one-bed two stops from work — before it was ever listed.', 'Renter · Astoria'],
-    ['JAMES WHITFIELD', 'I’ve used five brokerages as an investor. ALOFT is the only one where my agent texted me a better deal than the one I asked for.', 'Investor · Harlem'],
+    ['JAMES WHITFIELD', 'I’ve used five brokerages as an investor. OAKLINE is the only one where my agent texted me a better deal than the one I asked for.', 'Investor · Harlem'],
   ];
   let vi = 0, vt = null; const vq = $('#vqText'), vdots = $('#vqDots'), VDUR = 6500;
   V.forEach((_, i) => { const d = document.createElement('i'); d.innerHTML = '<b></b>'; d.onclick = () => showV(i); vdots.appendChild(d); });
@@ -323,9 +324,9 @@
   const ftWm = $('#ftWm'), footer = $('#footer');
   add(footer, (p, it) => { const q = clamp((sy + vh - it.t) / (vh * .9)); ftWm.style.setProperty('--wy', ((1 - eo(q)) * 46).toFixed(1) + '%'); });
   const shimRect = $('#shimRect'); let shimBusy = false;
-  function shimmer() { if (shimBusy) return; shimBusy = true; const t0 = performance.now(); (function s(n) { const k = clamp((n - t0) / 1400); shimRect.setAttribute('x', (-120 + 700 * eio(k)).toFixed(1)); shimRect.setAttribute('opacity', (Math.sin(k * Math.PI) * .7).toFixed(2)); if (k < 1) requestAnimationFrame(s); else shimBusy = false; })(t0); }
+  function shimmer() { if (shimBusy) return; shimBusy = true; const t0 = performance.now(); (function s(n) { const k = clamp((n - t0) / 1400); shimRect.setAttribute('x', (-120 + 900 * eio(k)).toFixed(1)); shimRect.setAttribute('opacity', (Math.sin(k * Math.PI) * .7).toFixed(2)); if (k < 1) requestAnimationFrame(s); else shimBusy = false; })(t0); }
   ftWm.addEventListener('mouseenter', shimmer); setInterval(() => { if (footer.getBoundingClientRect().top < vh * .6) shimmer(); }, 5200);
-  $('#news').addEventListener('submit', (e) => { e.preventDefault(); const r = $('#news button').getBoundingClientRect(); burst(r.left, r.top, 100); toast('You’re in. Welcome to ALOFT, ' + $('#newsIn').value.split('@')[0] + '.'); $('#newsIn').value = ''; });
+  $('#news').addEventListener('submit', (e) => { e.preventDefault(); const r = $('#news button').getBoundingClientRect(); burst(r.left, r.top, 100); toast('You’re in. Welcome to OAKLINE, ' + $('#newsIn').value.split('@')[0] + '.'); $('#newsIn').value = ''; });
   $('#portal').addEventListener('click', (e) => { e.preventDefault(); toast('Agent portal is for demo purposes only.'); });
 
   /* ---------- dots + nav ---------- */
@@ -462,5 +463,5 @@
     const t0 = performance.now(), D = 2400, num = $('#preNum'), bar = $('#preBar');
     (function s(n) { const k = clamp((n - t0) / D), v = eio(k); num.textContent = String(Math.round(v * 100)).padStart(3, '0'); bar.style.width = v * 100 + '%'; if (k < 1) requestAnimationFrame(s); else setTimeout(finishPre, 350); })(t0);
   }
-  window.__aloft = { applyTime, goTo, burst, toast };
+  window.__oakline = { applyTime, goTo, burst, toast };
 })();
