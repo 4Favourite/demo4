@@ -12,5 +12,5 @@ for fp in glob.glob('assets/*.*'):
 h=h.replace('<script src="js/art.js">','<script>window.ASSET_DATA='+json.dumps(ad)+'</script><script src="js/art.js">')
 for f in ['art','app','assets']:
     h=h.replace(f'<script src="js/{f}.js"></script>','<script>'+open(f'js/{f}.js').read().replace('</script>','<\\/script>')+'</script>')
-open('dist/aloft.html','w').write(h)
+open('dist/oakline.html','w').write(h)
 print(len(h)//1024,'KB')

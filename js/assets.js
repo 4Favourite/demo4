@@ -1,4 +1,4 @@
-/* ALOFT — real-photo overrides. Drop files into /assets with the names below
+/* OAKLINE — real-photo overrides. Drop files into /assets with the names below
    (jpg, webp or png). Anything missing keeps its procedural stand-in. */
 (function () {
   'use strict';
