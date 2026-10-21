@@ -46,6 +46,10 @@
       if (!url) return;
       const t = document.body.dataset.time || 'day';
       $$('[data-bld]').forEach((i) => { i.src = url; i.style.filter = FILTER[t]; });
+      const bld = document.getElementById('bld'), im0 = $$('[data-bld]')[0];
+      const fit = () => { const a = (im0.naturalWidth / im0.naturalHeight) || 1.2; bld.style.width = innerWidth > 980 ? 'min(80vw,1120px,' + (a * 56).toFixed(1) + 'vh)' : ''; };
+      if (im0.complete) fit(); else im0.addEventListener('load', fit, { once: true });
+      if (!window.__bldFit) { window.__bldFit = 1; addEventListener('resize', fit); }
       const w = document.getElementById('wmImg');
       if (w) { w.setAttribute('href', url); w.style.filter = FILTER[t]; }
     });
