@@ -1,4 +1,4 @@
-/* ALOFT — procedural art. Every "photo" on the site is generated here as SVG,
+/* OAKLINE — procedural art. Every "photo" on the site is generated here as SVG,
    so the whole site is one portable file. Swap any scene for a real <img> later. */
 (function () {
   const R = (s) => { let a = s >>> 0; return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; };
@@ -20,13 +20,15 @@
     night:  { sky: ['#050a1c', '#14224a', '#3a3f7a'], cloud: [120, 134, 190], glow: 1, paper: '#0d1426', ink: '#e9eeff', sun: [.74, .20, '#dfe7ff'], tint: 'rgba(10,20,80,.30)', stars: 1, night: 1 },
   };
 
-  /* ---------- the wordmark: custom geometric ALOFT, 496 x 100 ---------- */
+  /* ---------- the wordmark: custom geometric OAKLINE, 668 x 100 ---------- */
   const WM_PATHS = [
-    'M0 100 L34 0 H66 L100 100 H72 L66 78 H34 L28 100 Z M42 54 H58 L50 26 Z',
-    'M112 0 H140 V74 H192 V100 H112 Z',
-    'M234 0 H274 A30 30 0 0 1 304 30 V70 A30 30 0 0 1 274 100 H234 A30 30 0 0 1 204 70 V30 A30 30 0 0 1 234 0 Z M232 26 A14 14 0 0 0 232 74 H276 A14 14 0 0 0 276 26 Z',
-    'M316 0 H394 V26 H344 V40 H382 V64 H344 V100 H316 Z',
-    'M406 0 H496 V26 H465 V100 H437 V26 H406 Z',
+    'M44 0 H56 A44 44 0 0 1 100 44 V56 A44 44 0 0 1 56 100 H44 A44 44 0 0 1 0 56 V44 A44 44 0 0 1 44 0 Z M50 28 A22 22 0 0 0 50 72 A22 22 0 0 0 50 28 Z',
+    'M112 100 L146 0 H178 L212 100 H184 L178 78 H146 L140 100 Z M154 54 H170 L162 26 Z',
+    'M224 0 H252 V40 L288 0 H324 L274 54 L324 100 H288 L252 60 V100 H224 Z',
+    'M336 0 H364 V74 H416 V100 H336 Z',
+    'M428 0 H456 V100 H428 Z',
+    'M468 0 H496 L540 58 V0 H568 V100 H540 L496 42 V100 H468 Z',
+    'M580 0 H668 V26 H608 V37 H660 V63 H608 V74 H668 V100 H580 Z',
   ];
   const WM = WM_PATHS.join(' ');
 
